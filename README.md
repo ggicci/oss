@@ -15,10 +15,10 @@ var (
   secret = "<secret>"
   bucket = "<bucket>"
   object = "<object>"
-  c := oss.NewClient(endpoint, key, secret)
-  b := c.NewBucket(bucket)
 )
 
+c := oss.NewClient(endpoint, key, secret)
+b := c.NewBucket(bucket)
 
 ticket := b.NewTicket("PUT", object)
 ticket.Header.Set("Content-Type", "image/png")
