@@ -1,8 +1,6 @@
 package oss_test
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
 	"io/ioutil"
 	"net/http"
@@ -40,14 +38,6 @@ func TestSignTicket(t *testing.T) {
 		t.Fail()
 		return
 	}
-
-	// bs := make([]byte, 0, 0)
-	var buf = bytes.NewBuffer(nil)
-	encoder := json.NewEncoder(buf)
-	encoder.SetEscapeHTML(false)
-	encoder.SetIndent("", "    ")
-	encoder.Encode(tk)
-	println(buf.String())
 
 	r, err := http.NewRequest(tk.Verb, tk.SignedURL, f)
 	if err != nil {
