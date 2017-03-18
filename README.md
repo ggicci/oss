@@ -21,7 +21,7 @@ c := oss.NewClient(endpoint, key, secret)
 b := c.NewBucket(bucket)
 
 ticket := b.NewTicket("PUT", object)
-ticket.Header.Set("Content-Type", "image/png")
+ticket.Header.Set("Content-Type", "text/plain")
 // let oss server check file content md5
 ticket.Header.Set("Content-MD5", "eB5eJF1ptWaXm4bijSPyxw==")
 
@@ -41,7 +41,10 @@ The ticket (in JSON format) looks like:
     "header": {
         "Content-Type": [
             "text/plain"
-        ]
+        ],
+        "Content-MD5": [
+            "eB5eJF1ptWaXm4bijSPyxw=="
+        ],
     },
     "query": {
         "Expires": [
